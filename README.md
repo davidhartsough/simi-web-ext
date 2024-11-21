@@ -4,4 +4,4 @@
 
 Features:
 
-- currently only obscures photos
+- currently just obscures photos
