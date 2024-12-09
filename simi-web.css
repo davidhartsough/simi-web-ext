@@ -1,0 +1,6 @@
+.simi-web-enabled .simi-web-obscure {
+  filter: grayscale(80%);
+}
+.simi-web-enabled img.simi-web-obscure {
+  filter: blur(8px) grayscale(88%) opacity(0.15) !important;
+}
