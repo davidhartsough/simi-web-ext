@@ -3,7 +3,13 @@
   "name": "SiMi Web",
   "version": "1.0",
   "description": "Obscures photos",
-  "permissions": ["activeTab"],
+  "permissions": ["scripting", "activeTab"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Toggle"
+  },
   "content_scripts": [
     {
       "matches": ["<all_urls>"],

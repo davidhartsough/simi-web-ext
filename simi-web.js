@@ -1,11 +1,3 @@
-// const blurred = "blur(8px) grayscale(88%) opacity(0.15)";
-// const gradient = "linear-gradient(rgba(255,255,255,0.9),rgba(0,0,0,0.9))";
-// const gradient2 = "linear-gradient(rgba(64,64,64,0.5),rgba(0,0,0,0.5))";
-// const grayscale = "grayscale(80%)";
-// const dataKey = "data-photo-obscured";
-const myClassName = "simi-web-obscure";
-const bodyClassName = "simi-web-enabled";
-
 function shouldObscureImg(img) {
   return (
     !img.src.endsWith(".svg") &&
@@ -25,7 +17,6 @@ function shouldObscureBg(bgImg) {
     bgImg !== "none" &&
     !bgImg.includes(".svg") &&
     !bgImg.toLowerCase().includes("icon")
-    // && !bgImg.startsWith(gradient)
   );
 }
 
@@ -44,38 +35,9 @@ function shouldObscure(el) {
  * @param {Element} el
  */
 function examineElement(el) {
-  // const ogStyles = window.getComputedStyle(el);
-  // const ogBgImg = ogStyles.backgroundImage;
-  // const isImg = el.tagName === "IMG";
-  // if ((isImg && shouldObscureImg(el)) || shouldObscureBg(ogBgImg)) {
   if (shouldObscure(el)) {
-    // const bg = isImg ? gradient : `${gradient},${gradient2},${ogBgImg}`;
-    // const filter = isImg ? blurred : grayscale;
     el.classList.add("simi-web-obscure");
-    // if (el.getAttribute(dataKey) !== "true") {
-    //   el.style.backgroundImage = bg;
-    //   el.style.filter = filter;
-    //   el.setAttribute(dataKey, "true");
-    // }
-    // const ogFilter = ogStyles.filter;
-    /*
-    const toggle = () => {
-      // const isObscured = el.getAttribute(dataKey) === "true" || el.style.backgroundImage.startsWith(gradient);
-      // el.style.backgroundImage = isObscured ? ogBgImg : bg;
-      // el.style.filter = el.style.filter === filter ? ogFilter : filter;
-      // el.setAttribute(
-      //   dataKey,
-      //   el.getAttribute(dataKey) === "true" ? "false" : "true"
-      // );
-      el.classList.toggle("simi-web-obscure");
-    };
-    el.addEventListener("contextmenu", toggle);
-    */
   }
-}
-
-function toggleBody() {
-  document.body.classList.toggle(bodyClassName);
 }
 
 const whitelist = [
@@ -111,8 +73,7 @@ const whitelist = [
 const domain = window.location.hostname;
 if (whitelist.every((d) => !domain.includes(d))) {
   console.log("hide photos");
-  document.body.classList.add(bodyClassName);
-  document.addEventListener("contextmenu", toggleBody);
+  document.body.classList.add("simi-web-enabled");
   document.querySelectorAll("*").forEach(examineElement);
   const observer = new MutationObserver((mutations) => {
     mutations.forEach((mutation) => {
