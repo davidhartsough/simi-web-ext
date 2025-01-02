@@ -86,6 +86,7 @@ const whitelist = [
   "naturalreaders.com",
   "numberbarn.com",
   "spotify.com",
+  "waitbutwhy.com",
   //
   "raspberrypi.com",
 ];
